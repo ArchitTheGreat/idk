@@ -1,47 +1,11 @@
 <!DOCTYPE html>
-<html>
-<head>
-  <meta charset="UTF-8" />
-  <title>Loading…</title>
-
-  <script>
-    const base = "https://cdn.jsdelivr.net/gh/ArchitTheGreat/screenshot-to-site-sculpt@latest/dist/";
-
-    async function boot() {
-      try {
-        // Fetch the compiled index.html from your repo
-        const html = await fetch(base + "index.html").then(r => r.text());
-
-        // Rewrite all src/href paths so they load from the CDN
-        const rewritten = html
-          .replace(/src="\.\/?/g, `src="${base}`)
-          .replace(/href="\.\/?/g, `href="${base}`);
-
-        // Replace the whole DOM with the loaded version
-        document.open();
-        document.write(rewritten);
-        document.close();
-      } catch (err) {
-        document.body.innerHTML = "<h2>Failed to load site 💀</h2>";
-        console.error(err);
-      }
-    }
-
-    boot();
-  </script>
-
-  <style>
-    body {
-      font-family: sans-serif;
-      display: flex;
-      height: 100vh;
-      justify-content: center;
-      align-items: center;
-    }
-  </style>
-</head>
-
-<body>
-  Loading your app…
-</body>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Loading…</title>
+  </head>
+  <body>
+    <div id="root">Loading…</div>
+    <script src="/loader.js"></script>
+  </body>
 </html>
